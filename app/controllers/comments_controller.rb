@@ -16,12 +16,12 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.new(comment_params)
 
-    # if @comment.save
-    #   flash[:success] = 'Comment successfully created.'
-    #   redirect_to article_path(@article)
-    # else
-    #   render :new
-    # end
+    if @comment.save
+      flash[:success] = 'Comment successfully created.'
+      redirect_to article_path(@comment.article_id)
+    else
+      render :new
+    end
   end
 
 private
